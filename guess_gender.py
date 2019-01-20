@@ -4,13 +4,16 @@ from pathlib import Path
 
 import pandas as pd
 from nltk import NaiveBayesClassifier
+from nltk.classify import accuracy
 
 CLASSIFIER = None
+TEST_SET = None
+
 
 def _gender_feature(n) -> dict:
     n = str(n)
     return {
-        'last_letter': n[-1],
+        'last_letter': n[-4:],
         'letter_counter': ((letter, count) for letter, count in Counter(n).items())
     }
 
@@ -47,14 +50,22 @@ def _get_classifier():
                    for name, gender in _get_labelled_names()]
     train_length = int(len(featuresets) * 0.75)
     training_set = featuresets[0: train_length]
-    # test_set = featuresets[train_length:]
+    test_set = featuresets[train_length:]
     classifier = NaiveBayesClassifier.train(training_set)
-    # has an accuracy of 0.7779542146354373
-    return classifier
+    # has an accuracy of 0.877
+    return classifier, test_set
+
+
+def get_accuracy():
+    global CLASSIFIER, TEST_SET
+    if not CLASSIFIER:
+        CLASSIFIER, TEST_SET = _get_classifier()
+
+    return accuracy(CLASSIFIER, TEST_SET)
 
 
 def guess_gender(name):
-    global CLASSIFIER
+    global CLASSIFIER, TEST_SET
     if not CLASSIFIER:
-        CLASSIFIER = _get_classifier()
+        CLASSIFIER, TEST_SET = _get_classifier()
     return CLASSIFIER.classify(_gender_feature(name))

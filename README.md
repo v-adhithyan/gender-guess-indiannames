@@ -22,8 +22,13 @@ gender from indian names. So made one.
 ```
 
 ## Accuracy
-- Currently the accuracy is 0.78. Any contributions are welcome
+- Currently the accuracy is 0.88. Any contributions are welcome
 to improve the accuracy.
+
+## Changelog
+- When the last letter is considered as a feature for gender detection
+the accuracy is 78%.
+- When the last four letters was considered the accuracy became 88%.
 
 ## Todo
 - [ ] Convert to Pip package.

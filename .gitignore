@@ -68,3 +68,4 @@ target/
 *.xml
 .idea/
 venv/
+.DS_Store
