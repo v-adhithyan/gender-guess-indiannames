@@ -7,16 +7,23 @@ except IOError:
     long_description = ""
 
 setup(
-    name="gender-guess-indiannames",
-    version="0.1.0",
+    name="guess_indian_gender",
+    version="1.0.1",
     description="Guess gender from indian names",
     license="MIT",
     author="v-adhithyan",
+    author_email="pollachi.developer@gmail.com",
+    url="https://github.com/v-adhithyan/gender-guess-indiannames",
     packages=find_packages(),
-    install_requires=[],
+    install_requires=[
+                        "nltk",
+                        "pandas",
+                      ],
+    include_package_data=True,
     long_description=long_description,
     classifiers=[
-        "Programming Language :: Python",
         "Programming Language :: Python :: 3.7",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
     ]
 )

@@ -9,17 +9,20 @@ gender from indian names. So made one.
 - Python 3.7
 - Pipenv
 
-## Usage
+## Development - Setup instructions
 - Clone this repository.
 - cd to the repo
 - Activate pipenv `pipenv shell`
 - Install dependencies `pipenv install`
 - Fire up a python shell and type the following.
 ```python
->>> from guess_gender import guess_gender
->>> guess_gender('adhithyan') # returns male
->>> guess_gender('abi') # returns female
+>>> from guess_indian_gender import IndianGenderPredictor
+>>> i = IndianGenderPredictor()
+>>> i.predict(name="adhi") # returns male
 ```
+
+## Installation
+- `pip install guess-indian-gender`
 
 ## Accuracy
 - Currently the accuracy is 0.88. Any contributions are welcome
@@ -31,8 +34,9 @@ the accuracy is 78%.
 - When the last four letters was considered the accuracy became 88%.
 
 ## Todo
-- [ ] Convert to Pip package.
-- [ ] Convert to nice oops.
+- [x] Convert to Pip package.
+- [x] Convert to nice oops.
+- [ ] Improve accuracy to 95%.
 
 ## Dataset credits
 - <https://github.com/mbejda>
